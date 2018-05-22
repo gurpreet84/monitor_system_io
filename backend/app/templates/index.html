@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+{% endfor %}
+
+<div id="main" style="height:500px"></div>
+<script src="{{ url_for('static', filename='js/echarts.common.min.js')}}"></script>
+<script type="text/javascript">
+		var myChart = echarts.init(document.getElementById('main'));
+		myChart.setOption({
+			title: { text: 'Web Server System Info',
+			         x: 'center'
+			         },
+			tooltip: {
+			            show:true,
+			            trigger:'axis'
+			            },
+			legend : { data: ['CPU','Memory'], x:'right'},
+			grid: {
+                y:"20%",
+            },
+			xAxis: { data: {}},
+			yAxis: {},
+			dataZoom: [{
+					type: 'slider',
+					start:0,
+					end: 100
+				    }],
+			series: [{
+				name: 'System Info',
+				type: 'line',
+				data: []
+			}]
+		});
+		function getData(){
+		    $.getJSON('/cpuinfo/30', function(data){
+		        var arr = [];
+		        arr.push({data:data.ratio.cpu, name: 'CPU',type:'line' });
+		        arr.push({data:data.ratio.memory, name: 'Memory',type:'line'});
+				var times = [];
+				for(var i=0; i<data.time.length; i++){
+					times.push(moment(data.time[i]).format("YYYY-MM-DD HH:mm:ss"));
+				}
+
+				myChart.setOption({
+					xAxis: {
+						data: times
+						},
+					series: arr
+					});
+				});
+		}
+		getData();
+		setInterval(function(){
+		    getData();
+		},5000);
+
+	</script>
+{% endblock %}

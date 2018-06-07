@@ -50,7 +50,7 @@ export default {
        }
    },
    created(){
-       this.array = this.$store.state.arrays[this.$route.params.array_id];
+       this.array = this.$store.state.arrayObjects[this.$route.params.array_id];
        if(!this.array){
            this.array = JSON.parse(window.localStorage.getItem('current_item'));
        }else{
@@ -61,7 +61,7 @@ export default {
    },
    watch: {
        '$route' (to, from){
-          this.array = this.$store.state.arrays[to.params.array_id];
+          this.array = this.$store.state.arrayObjects[to.params.array_id];
           this.$store.commit('setItem', this.array); 
           window.localStorage.setItem('current_item', JSON.stringify(this.array));
           this.fetchData(to.params.array_id);

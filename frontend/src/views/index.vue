@@ -9,7 +9,7 @@
                     <Icon type="plus"></Icon>
                     <span>Add Array</span>
                 </MenuItem>
-                <MenuItem  v-for="(array, key, index) in arrays"  :name="key" :key="index"><Icon type="monitor"></Icon>{{ array.name }}</MenuItem> 
+                <MenuItem  v-for="(array, index) in arrays"  :name="array.id" :key="index"><Icon type="monitor"></Icon>{{ array.name }}</MenuItem> 
             </Menu>
         </Sider>
         <Layout :style="{marginLeft: '200px'}">

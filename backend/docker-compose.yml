@@ -1,0 +1,34 @@
+version: "3"
+services:
+  web: 
+    build: .
+    ports:
+      - "8001:8001"
+    volumes:
+      - .:/monitor
+    networks:
+      - "monitor-net"
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - /data1:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Password123!
+      MYSQL_DATABASE: monitor
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: Password123!
+    networks:
+      - "monitor-net"
+  redis:
+    image: redis
+    networks:
+      - "monitor-net"
+
+networks:
+  monitor-net:
+    driver: bridge

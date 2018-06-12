@@ -1,7 +1,7 @@
 {
   "name": "monitor",
   "version": "2.1.0",
-  "description": "A base project with Vue.js2、Vue-Router、webpack2 and with iView2.",
+  "description": "A base project with Vue.js2、Vue-Router、webpack2 and with iView2.(copy from iView template)",
   "main": "index.js",
   "scripts": {
     "init": "webpack --progress --config webpack.dev.config.js",
@@ -12,21 +12,20 @@
     "type": "git",
     "url": "git+https://github.com/iview/iview-project.git"
   },
-  "author": "Aresn",
+  "author": "Michael",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "echarts": "^4.0.4",
     "iview": "^2.0.0-rc.8",
     "moment": "^2.20.1",
     "v-charts": "^1.16.10",
     "vue": "^2.2.6",
-    "vue-chart-js": "^1.4.1",
     "vue-router": "^2.2.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
-    "axios": "^0.17.1",
     "babel": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.2.4",

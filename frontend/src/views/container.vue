@@ -8,7 +8,7 @@
                placeholder="Select date and time" 
                style="width: 300px"
                @on-ok="handleOK"></DatePicker>
-   <ve-line :data="chartData" :settings="chartSettings"></ve-line>
+   <ve-line :data="chartData" :settings="chartSettings" :theme="theme"></ve-line>
    <Table border :columns="columns" :data="table_data"></Table>
 </div>
 </template>
@@ -17,6 +17,11 @@ import moment from 'moment';
 export default {
   data(){
       return {
+          theme:{
+              line: {
+                  smooth: false
+              }
+          },
           chartData: {},
           chartSettings:{},
           daterange:[],

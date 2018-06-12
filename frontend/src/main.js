@@ -26,7 +26,7 @@ const router = new VueRouter(RouterConfig);
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
     Util.title(to.meta.title);
-    if(JSON.parse(window.localStorage.getItem('current_item'))){
+    if(window.localStorage.getItem('current_item')){
         store.commit('setItem', JSON.parse(window.localStorage.getItem('current_item')));
         next();
     }else{

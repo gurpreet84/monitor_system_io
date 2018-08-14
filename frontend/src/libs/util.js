@@ -2,7 +2,7 @@ let util = {
 
 };
 util.title = function (title) {
-    title = title ? title + ' - Home' : 'Memory Monitor';
+    title = title ? title + ' - Home' : 'Disk Monitor';
     window.document.title = title;
 };
 
